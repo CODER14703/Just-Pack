@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PackNChew — Smart Travel & Food Companion</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-gradient-to-b from-blue-50 to-white text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="text-2xl font-extrabold text-blue-600">Pack<span class="text-amber-500">NChew</span></div>
+      <nav class="hidden md:flex gap-6 text-gray-600 font-medium">
+        <a href="#" class="hover:text-blue-600">Home</a>
+        <a href="#planner" class="hover:text-blue-600">Trip Planner</a>
+        <a href="#food" class="hover:text-blue-600">Food Discovery</a>
+        <a href="#features" class="hover:text-blue-600">Features</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Login</button>
+        <button class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 transition">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[480px] overflow-hidden">
+    <img src="https://images.pexels.com/photos/386025/pexels-photo-386025.jpeg?auto=compress&cs=tinysrgb&w=1600" class="slide active">
+    <img src="https://images.pexels.com/photos/21014/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1600" class="slide">
+    <img src="https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg?auto=compress&cs=tinysrgb&w=1600" class="slide">
+    <div class="absolute inset-0 bg-black/40 flex flex-col justify-center px-8 text-white">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">Travel Smart. Eat Better. Explore More.</h1>
+      <p class="text-lg md:text-xl max-w-xl opacity-90">PackNChew combines AI-powered travel planning, real-time tracking, and food discovery — all in one place.</p>
+      <div class="mt-6 flex gap-4">
+        <a href="#planner" class="bg-amber-400 text-gray-900 px-5 py-2 rounded-md font-semibold hover:bg-amber-300 transition">Plan Your Trip</a>
+        <a href="#food" class="px-5 py-2 border border-white rounded-md hover:bg-white hover:text-gray-800 transition">Discover Food</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- Trip Planner -->
+    <section id="planner" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-blue-700 text-center">🧭 Trip Planner</h2>
+      <form id="tripForm" class="bg-white p-6 rounded-xl shadow-md grid md:grid-cols-4 gap-4">
+        <input id="fromInput" type="text" placeholder="From (City / Place)" class="border p-3 rounded w-full" required>
+        <input id="toInput" type="text" placeholder="To (City / Place)" class="border p-3 rounded w-full" required>
+        <input type="date" class="border p-3 rounded w-full" required>
+        <button type="submit" class="md:col-span-4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Show Route</button>
+      </form>
+
+      <div id="map" class="mt-6 shadow-lg"></div>
+      <div id="routesList" class="mt-6 text-center"></div>
+    </section>
+
+    <!-- Food Discovery -->
+    <section id="food" class="mb-16">
+      <h2 class="text-3xl font-bold mb-10 text-amber-600 text-center">🍴 Food Discovery</h2>
+      <div id="foodGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"></div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="mb-16">
+      <h2 class="text-3xl font-bold mb-10 text-blue-700 text-center">🌟 Why PackNChew Stands Out</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="feature-card">
+          <h3>🍴 Travel Meets Food</h3>
+          <p>Explore destinations and taste the best local dishes curated just for travelers.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💸 Budget Friendly</h3>
+          <p>AI suggests routes and meals that fit perfectly within your travel budget.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🧭 Smart AI Planning</h3>
+          <p>Optimized itineraries powered by AI for the smoothest travel experience.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🚍 Real-Time Tracking</h3>
+          <p>Track your journey live with dynamic maps and travel updates.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🌐 All-in-One Platform</h3>
+          <p>Plan, navigate, and eat—all from one simple app interface.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🤝 Partner Friendly</h3>
+          <p>Collaborate with restaurants, guides, and local travel services.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-10">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 text-center md:text-left">
+      <div>
+        <h3 class="text-lg font-semibold mb-3">About PackNChew</h3>
+        <p class="text-sm opacity-80">Your all-in-one AI-powered travel & food companion. Plan routes, find local dishes, and explore the world smarter.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+        <ul class="space-y-2 text-sm opacity-90">
+          <li><a href="#planner" class="hover:underline">Trip Planner</a></li>
+          <li><a href="#food" class="hover:underline">Food Discovery</a></li>
+          <li><a href="#features" class="hover:underline">Features</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Follow Us</h3>
+        <div class="flex justify-center md:justify-start gap-4">
+          <a href="#" class="hover:text-amber-400">🌐</a>
+          <a href="#" class="hover:text-amber-400">🐦</a>
+          <a href="#" class="hover:text-amber-400">📸</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm opacity-70">© 2025 PackNChew. All rights reserved.</div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
